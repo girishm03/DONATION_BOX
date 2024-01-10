@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static 'IMG/logo.jpeg' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Donation Box</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page" style="background-color:#1f6fb0;">
+
+   <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section long_section px-0">
+      <nav class="navbar navbar-expand-lg custom_nav-container " style="background-color:#6bb7be;">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            Donation Box
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+            <ul class="navbar-nav  ">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Homepage' %}">Home</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}"> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'donate' %}">Donate</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Camp' %}">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">More</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'contact' %}">Contact us</a></li>
+                  <li><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="quote_btn-container">
+            <a href="">
+              {% if request.session.UserName %}
+              <a href="{% url 'User_logout' %}"><i class="fa fa-user" aria-hidden="true"></i> {{request.session.UserName}} / LOGOUT</a>
+              {% else %}
+              <a href="{% url 'register_page' %}"><i class="fa fa-user" aria-hidden="true"></i> REGISTER OR LOGIN</a>
+              {% endif %}
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end header section -->
+
+  </div>
+
+
+    <div id="homeCarousel" class="carousel slide carousel-home" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <!-- /.item -->
+            <div class="item ">
+              <img src="{% static 'assets/images/slider/home-slider-3.jpg' %}" alt="" style="padding-left:45px; width:1468px;">
+              <div class="container">
+                <div class="carousel-caption">
+                  <h2 class="carousel-title bounceInDown animated slow" >A penny is a lot of money, if you have not got a penny.</h2>
+                  <h4 class="carousel-subtitle bounceInUp animated slow">You can make the diffrence !</h4>
+                  <a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated" data-toggle="modal" id="btn1" data-target="#donateModal">DONATE $</a>
+                  <a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated" data-toggle="modal" id="btn2" data-target="#donateModal">DONATE ITEM</a>
+                </div>
+                <!-- /.carousel-caption -->
+              </div>
+            </div><!-- /.item -->
+    </div>
+   <!-- /.carousel -->
+ </div>
+  <!-- Donation section -->
+   {% for r in data2 %}
+   <section class="contact_section  long_section" style="display:none;" id="sect1">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+          <div class="form_container">
+            <div class="heading_container">
+
+               <div style="margin-left:500px; font-family:sans-serif;">
+                    <form>
+                       <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_NJfJORieAMv5ma/view" data-text="Donate Now" data-color="#528FF0" data-size="large">
+  <script>
+    (function(){
+      var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+      if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+      s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+      rzp && rzp.init && rzp.init()}})();
+  </script>
+</div>
+
+
+</form>
+               </div>
+
+              <h2>
+                <br>Donation Enquiry
+              </h2>
+                <p>Confirm your donation here</p>
+            </div>
+
+              <form method="post" action="{% url 'contibdata' %}" >
+               {% csrf_token %}
+              <div>
+                <input type="text" placeholder="Your Name" name="dname" value="{{request.session.UserName}}" />
+              </div>
+              <div>
+                <input type="text" placeholder="Phone Number" name="dmobile" value="{{r.Mobile_Number}}" />
+              </div>
+                <div>
+                  <input type="text" placeholder="Occupation" name="doccupation">
+                </div>
+              <div>
+                <input type="email" placeholder="Email" name="demail" value="{{r.Email}}" />
+              </div>
+                  <div>
+                <input type="text" placeholder="Amount" name="damount" />
+              </div>
+                 <div>
+                   <select class="js-example-basic-single w-100 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="dcategory">
+                      <option>--->Donation Towards<---</option>
+                        {% for d in category %}
+                    <option>{{d.C_name}}</option>
+                        {% endfor %}
+                    </select>
+                 </div> <br>
+                <div>
+                <input type="text" class="message-box" placeholder="Any Messages or About Yourself" name="dmessage"/>
+              </div>
+                  <div>
+                      <label>Screenshot or recipt file</label>
+                <input type="file" name="dfile"  />
+              </div>
+              <div class="btn_box">
+                <button type="submit">
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+   <section class="contact_section  long_section" style="display:none;" id="sect2">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+          <div class="form_container">
+            <div class="heading_container">
+              <h2>
+                Donate Items
+              </h2>
+            </div>
+              <form method="post" action="{% url 'itemdata' %}" >
+               {% csrf_token %}
+              <div>
+                <input type="text" placeholder="Your Name" name="Iname" value="{{request.session.UserName}}" />
+              </div>
+              <div>
+                <input type="text" placeholder="Phone Number" name="Imobile" value="{{r.Mobile_Number}}" />
+              </div>
+              <div>
+                <input type="email" placeholder="Email" name="Iemail" value="{{r.Email}}" />
+              </div>
+                  <div>
+                <input type="text" placeholder="Address" name="Ilocation" />
+              </div>
+                  <div>
+                <input type="text" class="message-box" placeholder="Items you wish to be donated" name="Iitem"/>
+              </div>
+              <div class="btn_box">
+                <button type="submit">
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+   {% endfor %}
+  <!-- end donation section -->
+
+     <!-- client section -->
+  <section class="furniture_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Donors/Volunteers
+        </h2>
+        <p>
+          Most frequent Donors and Volunteers that have contributed towards this website
+        </p>
+      </div>
+      <div class="row">
+        {% for d in per %}
+        <div class="col-md-6 col-lg-4">
+          <div class="box" style="background-color: transparent;">
+            <div class="img-box">
+              <img src="{{d.Pimage.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                {{d.Pname}} / {{d.pDOV}}
+              </h5>
+              <div class="price_box">
+                <h6 class="price_heading">
+                  {{d.Pabout}}<br>
+                  Donated: Rs:{{d.pamount}}
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- end client section -->
+
+  <!-- info section -->
+  <section class="info_section long_section">
+
+    <div class="container">
+      <div class="contact_nav">
+        <a href="">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <span>
+            Call : +01 123455678990
+          </span>
+        </a>
+        <a href="">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <span>
+            Email : demo@gmail.com
+          </span>
+        </a>
+        <a href="">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <span>
+            Location
+          </span>
+        </a>
+      </div>
+
+      <div class="info_top ">
+        <div class="row ">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="info_links">
+              <h4>
+                QUICK LINKS
+              </h4>
+              <div class="info_links_menu">
+                <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="" href="about.html"> About</a>
+                <a class="" href="furniture.html">Donate</a>
+                <a class="" href="furniture.html">Events</a>
+                <a class="" href="furniture.html">Blog</a>
+                <a class="" href="furniture.html">Gallery</a>
+                <a class="" href="contact.html">Contact Us</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5" style="margin-left:380px;">
+            <div class="info_form">
+              <h4>
+                SIGN UP TO OUR NEWSLETTER
+              </h4>
+              <form action="">
+                <input type="text" placeholder="Enter Your Email" />
+                <button type="submit">
+                  Subscribe
+                </button>
+              </form>
+              <div class="social_box">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+   <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By girishmadhu03@gmail.com
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+
+  <!-- jQery -->
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static 'js/custom.js' %}"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <!-- End Google Map -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#sect1").slideToggle("slow")
+            })
+            $("#btn2").click(function(){
+                $("#sect2").slideToggle("slow")
+            })
+        })
+    </script>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+                <script>
+                    swal('{{i}}','','warning')
+                </script>
+            {% elif i.tags == 'error' %}
+                <script>
+                    swal('{{i}}','','error')
+                </script>
+            {% elif i.tags == 'success' %}
+                <script>
+                    swal('{{i}}','','success')
+                </script>
+            {% else %}
+                <script>
+                    swal('{{i}}','','info')
+                </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

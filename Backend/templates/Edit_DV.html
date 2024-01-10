@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">ADD DONORS AND VOLENTEERS</h4>
+                    <form class="forms-sample" method="post" action="{% url 'updateper' dataid=person_data.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="pname" value={{person_data.Pname}}>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail3">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" name="pemail"value={{person_data.Pemail}}>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectGender" >Gender</label>
+                        <select class="form-control" id="exampleSelectGender" name="pgender">
+                          <option>{{person_data.Pgender}}</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Trans</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Country</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location" name="plocation" value={{person_data.Plocation}}>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Occupation</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Occupation" name="poccupation" value={{person_data.Poccupation}}>
+                      </div>
+                      <div class="form-group">
+                    <label>DONATED TOWARDS</label>
+                    <select class="js-example-basic-single w-100 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="pcategory">
+                        <option>{{person_data.Pcategory}}</option>
+                        {% for d in category %}
+                    <option>{{d.C_name}}</option>
+                        {% endfor %}
+                    </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectGender" >Section</label>
+                        <select class="form-control" id="exampleSelectGender" name="pdov">
+                          <option>{{person_data.pDOV}}</option>
+                          <option>Donor</option>
+                          <option>Volunteer</option>
+                        </select>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Donated Amount</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputMobile" placeholder="Donated Amount" name="pamount" value={{person_data.pamount}}>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">About</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="pabout">{{person_data.Pabout}}</textarea>
+                      </div>
+                        <div class="form-group">
+                            <label>Profile Image</label><br>
+                            <img src="{{person_data.Pimage.url}}" width="100px" height="100px"><br>
+                            <input type="file" name="pimage">
+                        </div>
+                      <button type="submit" style="margin-left:400px;padding-left:100px;padding-right:100px;" class="btn btn-primary mr-2">Update</button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+                <script>
+                    swal('{{i}}','','warning')
+                </script>
+            {% elif i.tags == 'error' %}
+                <script>
+                    swal('{{i}}','','error')
+                </script>
+            {% elif i.tags == 'success' %}
+                <script>
+                    swal('{{i}}','','success')
+                </script>
+            {% else %}
+                <script>
+                    swal('{{i}}','','info')
+                </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static 'IMG/logo.jpeg' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Donation Box</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'faq/style.css' %}">
+  <!-- font awesome style -->
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+
+</head>
+<body>
+<div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section long_section px-0">
+      <nav class="navbar navbar-expand-lg custom_nav-container " style="background-color:#6bb7be;">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            Donation Box
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+            <ul class="navbar-nav  ">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Homepage' %}">Home</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}"> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'donate' %}">Donate</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Camp' %}">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">More</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'contact' %}">Contact us</a></li>
+                  <li><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="quote_btn-container">
+            <a href="">
+              {% if request.session.UserName %}
+              <a href="{% url 'User_logout' %}"><i class="fa fa-user" aria-hidden="true"></i> {{request.session.UserName}} / LOGOUT</a>
+              {% else %}
+              <a href="{% url 'register_page' %}"><i class="fa fa-user" aria-hidden="true"></i> REGISTER OR LOGIN</a>
+              {% endif %}
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end header section -->
+  </div>
+<section class="contact_section  long_section" style="margin-top: -700px;">
+<div class="container">
+  <h2>Frequently Asked Questions</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">
+        Q: How can I donate?</span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>You can easily donate through our website by clicking on the "Donate" button and following the simple instructions.
+          We accept major credit cards and PayPal.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">
+        Q: Is my donation secure?</span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p> Absolutely. Our website uses SSL encryption to ensure that your donation is processed securely.
+          We prioritize the privacy and security of your information.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">
+        Q: Where does the money go? </span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>Your donation goes directly to supporting [specific cause or organization].
+          We provide transparent reports on how funds are used to make a positive impact.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">Q: Can I set up recurring donations?</span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>Yes, you can set up recurring donations on our website.
+          This option allows you to provide ongoing support effortlessly.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title">Q: Is my donation tax-deductible? </span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>Yes, your donation is tax-deductible to the extent allowed by law.
+          You will receive a confirmation receipt with the necessary details for tax purposes.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-6" aria-expanded="false"><span class="accordion-title">Q: What payment methods do you accept? </span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>We accept major credit cards (Visa, MasterCard, American Express) and PayPal for your convenience.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-7" aria-expanded="false"><span class="accordion-title">Q: Do you share donor information?  </span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>No, we do not share or sell donor information. We respect your privacy and adhere to strict confidentiality standards.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-8" aria-expanded="false"><span class="accordion-title">Q: How can I get a receipt for my donation? </span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>You will receive an email confirmation immediately after your donation, serving as an official receipt.
+          Please keep this for your records.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-9" aria-expanded="false"><span class="accordion-title">Q: Are there any administrative costs? </span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>We strive to minimize administrative costs to ensure the maximum impact of your donation.
+          Any necessary administrative fees are clearly outlined in our financial reports.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-10" aria-expanded="false"><span class="accordion-title">Q: Can I designate my donation to a specific cause?</span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p>Absolutely. During the donation process, you can specify the cause or program you'd like your donation to support.
+          We offer options to align your contribution with your passion.</p>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+
+ <!-- info section -->
+   <section class="info_section long_section">
+
+    <div class="container">
+      <div class="contact_nav">
+        <a href="">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <span>
+            Call : +01 123455678990
+          </span>
+        </a>
+        <a href="">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <span>
+            Email : demo@gmail.com
+          </span>
+        </a>
+        <a href="">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <span>
+            Location
+          </span>
+        </a>
+      </div>
+
+      <div class="info_top ">
+        <div class="row ">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="info_links">
+              <h4>
+                QUICK LINKS
+              </h4>
+              <div class="info_links_menu">
+                <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="" href="furniture.html">Donate</a>
+                <a class="" href="furniture.html">Events</a>
+                <a class="" href="about.html"> About</a>
+                <a class="" href="contact.html">Contact Us</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5" style="margin-left:380px;">
+            <div class="info_form">
+              <h4>
+                SIGN UP TO OUR NEWSLETTER
+              </h4>
+              <form action="">
+                <input type="text" placeholder="Enter Your Email" />
+                <button type="submit">
+                  Subscribe
+                </button>
+              </form>
+              <div class="social_box">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+   <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By girishmadhu03@gmail.com
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static 'js/custom.js' %}"></script>
+
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script  src="{% static 'faq/script.js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
